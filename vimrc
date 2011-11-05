@@ -1,16 +1,16 @@
+" .vimrc file of Eric Xu, many features were copy/pasted
+" from others' vimrc files.
 set nocompatible    " use vim defaults
 set ls=2            " allways show status line
 set expandtab       " tabs are converted to spaces, use only when required
 set tabstop=2       " numbers of spaces of tab character
 set shiftwidth=2    " numbers of spaces to (auto)indent
-set softtabstop=2				" the space used by a tab
-set scrolloff=3     " keep 3 lines when scrolling
+set softtabstop=2		" the space used by a tab
+set scrolloff=1     " keep 1 lines when scrolling
 set showcmd         " display incomplete commands
 set hlsearch        " highlight searches
 set incsearch       " do incremental searching
 set ruler           " show the cursor position all the time
-set visualbell t_vb=    " turn off error beep/flash
-set novisualbell    " turn off visual bell
 set nobackup        " do not keep a backup file
 set number          " show line numbers
 set ignorecase      " ignore case when searching
@@ -29,15 +29,16 @@ syntax on           " syntax highlighing
 call pathogen#infect()
 set spell
 if has("gui_running")
-    set lines=55       " height = 50 lines
-    set columns=100        " width = 100 columns
-    set background=light   " adapt colors for background
-    set selectmode=mouse,key,cmd
-    set keymodel=
-	  colorscheme solarized
+  set guioptions-=T    
+  set lines=50         
+  set columns=100     
+  set background=light 
+  set selectmode=mouse,key,cmd
+  set keymodel=
+	colorscheme solarized
 else
-    set background=dark        " adapt colors for background
-	  colorscheme solarized
+  set background=dark        " adapt colors for background
+	colorscheme solarized
 endif
 
 if has("autocmd")
@@ -78,8 +79,26 @@ set listchars=tab:▸\ ,eol:¬
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
-" Common command line typos
+" Save some key presses
 cmap W w
+cmap WQ wq
+cmap wQ wq
 cmap Q q
-"inoremap <tab> <c-n>
+cmap Tabe tabe
+
+" C D Y family
+nnoremap Y y$
+
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
+map <C-L> <C-W>l<C-W>_
+map <C-H> <C-W>h<C-W>_
+
+" sudo make me a sandwich style writing
+cmap w!! w !sudo tee % >/dev/null
+
+" change to the folder of my current file
+cmap cd. lcd %:p:h
+nnoremap j gj
+nnoremap k gk
 
