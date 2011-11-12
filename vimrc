@@ -1,33 +1,34 @@
 " .vimrc file of Eric Xu, many features were copy/pasted
 " from others' vimrc files.
 set nocompatible    " use vim defaults
-set ls=2            " allways show status line
-set expandtab       " tabs are converted to spaces, use only when required
-set tabstop=2       " numbers of spaces of tab character
-set shiftwidth=2    " numbers of spaces to (auto)indent
-set softtabstop=2		" the space used by a tab
-set scrolloff=1     " keep 1 lines when scrolling
-set showcmd         " display incomplete commands
-set hlsearch        " highlight searches
-set incsearch       " do incremental searching
-set ruler           " show the cursor position all the time
-set nobackup        " do not keep a backup file
-set number          " show line numbers
-set ignorecase      " ignore case when searching
-set title           " show title in console title bar
-set ttyfast         " smoother changes
-set modeline        " last lines in document sets vim mode
-set modelines=3     " number lines checked for modelines
-set shortmess=atI   " Abbreviate messages
-set nostartofline   " don't jump to first character when paging
-set whichwrap=b,s,h,l,<,>,[,]   " move freely between files
-set noautoindent
-set nosmartindent
-set nocindent  
-
 syntax on           " syntax highlighing
 call pathogen#infect()
-set spell
+
+set expandtab       " tabs are converted to spaces, use only when required
+set hlsearch        " highlight searches
+set ignorecase      " ignore case when searching
+set incsearch       " do incremental searching
+set ls=2            " allways show status line
+set modeline        " last lines in document sets vim mode
+set modelines=3     " number lines checked for modelines
+set noautoindent
+set nobackup        " do not keep a backup file
+set nocindent  
+set nosmartindent
+set nostartofline   " don't jump to first character when paging
+set number          " show line numbers
+set ruler           " show the cursor position all the time
+set scrolloff=1     " keep 1 lines when scrolling
+set shiftwidth=2    " numbers of spaces to (auto)indent
+set shortmess=atI   " Abbreviate messages
+set showcmd         " display incomplete commands
+set softtabstop=2		" the space used by a tab
+set spell           " because English is hard
+set tabstop=2       " numbers of spaces of tab character
+set title           " show title in console title bar
+set ttyfast         " smoother changes
+set whichwrap=b,s,h,l,<,>,[,]   " move freely between files
+
 if has("gui_running")
   set guioptions-=T    
   set lines=50         
