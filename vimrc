@@ -5,6 +5,7 @@ syntax on           " syntax highlighing
 call pathogen#infect()
 
 set expandtab       " tabs are converted to spaces, use only when required
+set history=1000    " Those who cannot remember the past are condemned to repeat it. 
 set hlsearch        " highlight searches
 set ignorecase      " ignore case when searching
 set incsearch       " do incremental searching
@@ -22,11 +23,13 @@ set scrolloff=1     " keep 1 lines when scrolling
 set shiftwidth=2    " numbers of spaces to (auto)indent
 set shortmess=atI   " Abbreviate messages
 set showcmd         " display incomplete commands
+set smartcase       " will respect upper case char if there is any
 set softtabstop=2		" the space used by a tab
 set spell           " because English is hard
 set tabstop=2       " numbers of spaces of tab character
 set title           " show title in console title bar
 set ttyfast         " smoother changes
+set visualbell
 set whichwrap=b,s,h,l,<,>,[,]   " move freely between files
 
 if has("gui_running")
@@ -103,3 +106,6 @@ cmap cd. lcd %:p:h
 nnoremap j gj
 nnoremap k gk
 
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+filetype plugin on
