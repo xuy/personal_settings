@@ -3,6 +3,7 @@
 set nocompatible    " use vim defaults
 syntax on           " syntax highlighing
 call pathogen#infect()
+:filetype plugin on
 
 set expandtab       " tabs are converted to spaces, use only when required
 set history=1000    " Those who cannot remember the past are condemned to repeat it. 
@@ -19,7 +20,7 @@ set nosmartindent
 set nostartofline   " don't jump to first character when paging
 set number          " show line numbers
 set ruler           " show the cursor position all the time
-set scrolloff=1     " keep 1 lines when scrolling
+set scrolloff=3     " keep 1 lines when scrolling
 set shiftwidth=2    " numbers of spaces to (auto)indent
 set shortmess=atI   " Abbreviate messages
 set showcmd         " display incomplete commands
@@ -45,31 +46,6 @@ else
 	colorscheme solarized
 endif
 
-if has("autocmd")
-    " Restore cursor position
-    au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
-
-    " Filetypes (au = autocmd)
-    au FileType helpfile set nonumber      " no line numbers when viewing help
-    au FileType helpfile nnoremap <buffer><cr> <c-]>   " Enter selects subject
-    au FileType helpfile nnoremap <buffer><bs> <c-T>   " Backspace to go back
-    
-    " When using mutt, text width=72
-    au FileType mail,tex set textwidth=72
-    au FileType cpp,c,java,sh,pl,php,asp  set autoindent
-    au FileType cpp,c,java,sh,pl,php,asp  set smartindent
-    au FileType cpp,c,java,sh,pl,php,asp  set cindent
-    "au BufRead mutt*[0-9] set tw=72
-    
-    " Automatically chmod +x Shell and Perl scripts
-    "au BufWritePost   *.sh             !chmod +x %
-    "au BufWritePost   *.pl             !chmod +x %
-
-    " File formats
-    au BufNewFile,BufRead  *.pls    set syntax=dosini
-    au BufNewFile,BufRead  modprobe.conf    set syntax=modconf
-endif
-
 " Keyboard mappings
 map <F1> :previous<CR>  " map F1 to open previous buffer
 map <F2> :next<CR>      " map F2 to open next buffer
@@ -84,13 +60,9 @@ highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
 " Save some key presses
-cmap W w
 cmap WQ wq
-cmap wQ wq
-cmap Q q
-cmap Tabe tabe
 
-" C D Y family
+" C D Y family consistency
 nnoremap Y y$
 
 map <C-J> <C-W>j<C-W>_
@@ -105,7 +77,9 @@ cmap w!! w !sudo tee % >/dev/null
 cmap cd. lcd %:p:h
 nnoremap j gj
 nnoremap k gk
-
+imap ;; <Esc>
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
-filetype plugin on
+
+" Stuff about plugins
+let g:EasyMotion_leader_key = '<Leader>'

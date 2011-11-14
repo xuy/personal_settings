@@ -34,3 +34,5 @@ source $ZSH/oh-my-zsh.sh
 function precmd () {
   _z --add "$(pwd -P)"
 }
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
