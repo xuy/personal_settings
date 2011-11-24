@@ -1,0 +1,32 @@
+#!/bin/sh
+# A little tool that does in-situ replacement of a file.
+# Usage: 
+#     [some | command | chain] | replace your_file
+#  or
+#     replace your_file [a command applied to file]
+#
+# It is different than redirection. In redirection, you cannot do things like
+# grep pattern file.txt > file.txt 
+# because redirection will overwrite the file you are greping.
+# It is safe, however, to use
+#     replace file grep pattern
+#  or 
+#     grep pattern file | replace file
+# Also, sed -i is your friend. 
+
+BFILE="/tmp/replace.out.$$"
+FILE=""
+tty -s
+if [ "$?" -ne "0" ]; then
+  FILE=$1
+  cat > $BFILE
+else
+  FILE=$1
+  shift
+  if [ "$#" -eq 0 ]; then
+    > $BFILE
+  else
+    $@ $FILE > $BFILE
+  fi
+fi
+mv $BFILE $FILE

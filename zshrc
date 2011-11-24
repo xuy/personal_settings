@@ -36,3 +36,10 @@ function precmd () {
 }
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
+PLAN9=/Users/xuy/PlayGround/plan9port
+export PLAN9
+PATH=$PATH:$PLAN9/bin
+# fix some readline things
+bindkey 'ƒ' forward-word
+bindkey '∫' backward-word
+alias cl='cd $@ && ls'
